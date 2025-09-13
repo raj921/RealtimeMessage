@@ -4,9 +4,7 @@ const { check } = require('express-validator');
 const authController = require('../controllers/authController');
 const auth = require('../middleware/auth');
 
-// @route   POST api/auth/register
-// @desc    Register a new user
-// @access  Public
+
 router.post(
   '/register',
   [
@@ -19,9 +17,7 @@ router.post(
   authController.register
 );
 
-// @route   POST api/auth/login
-// @desc    Authenticate user & get token
-// @access  Public
+
 router.post(
   '/login',
   [
@@ -31,14 +27,10 @@ router.post(
   authController.login
 );
 
-// @route   POST api/auth/refresh-token
-// @desc    Refresh access token
-// @access  Private
+
 router.post('/refresh-token', authController.refreshToken);
 
-// @route   POST api/auth/logout
-// @desc    Logout user / clear refresh token
-// @access  Private
+
 router.post('/logout', auth, authController.logout);
 
 module.exports = router;
